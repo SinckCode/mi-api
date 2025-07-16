@@ -12,7 +12,7 @@ router.post('/deploy', (req, res) => {
   }
 
   const REPO_PATH = '/home/onesto/mi-portfolio';
-  const DEST_PATH = '/var/www/portafolio';
+  const DEST_PATH = '/var/www/portafolioN';
   const USE_PM2 = false;
 
   const commands = [
