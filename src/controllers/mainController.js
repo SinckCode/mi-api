@@ -1,10 +1,12 @@
 const { exec } = require('child_process');
 
-const SECRET = process.env.DEPLOY_SECRET || 'a98f3hT97hfd23FHh90+++ffd392_HFD';
+const SECRET = process.env.DEPLOY_SECRET || 'a98f3hT97hfd23HFh90+++ffd392_HFD';
 
 exports.deploy = (req, res) => {
   const auth = req.headers['authorization'];
-  if (!auth || !auth.includes(SECRET)) {
+
+  // Comparación exacta
+  if (!auth || auth !== `Bearer ${SECRET}`) {
     return res.status(403).send('Acceso no autorizado');
   }
 
