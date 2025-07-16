@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { hello } = require('../controllers/mainController');
+const mainController = require('../controllers/mainController');
 
-router.get('/', hello); // http://localhost:3000/api/
+router.post('/deploy', mainController.deploy);
 
 module.exports = router;

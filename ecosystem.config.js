@@ -1,10 +1,13 @@
 module.exports = {
-  apps: [{
-    name: 'api-express',
-    script: './src/app.js',
-    watch: true,
-    env: {
-      PORT: 3000
+  apps: [
+    {
+      name: 'mi-api',
+      script: 'app.js',
+      watch: false,
+      env: {
+        NODE_ENV: 'production',
+        PORT: 4000
+      }
     }
-  }]
+  ]
 };
