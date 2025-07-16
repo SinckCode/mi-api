@@ -1,11 +1,8 @@
-const express = require('express');
-const router = express.Router();
 const { exec } = require('child_process');
-const path = require('path');
 
-const SECRET = 'a98f3hT97hfd23FHh90+++ffd392_HFD';
+const SECRET = process.env.DEPLOY_SECRET || 'a98f3hT97hfd23FHh90+++ffd392_HFD';
 
-router.post('/deploy', (req, res) => {
+exports.deploy = (req, res) => {
   const auth = req.headers['authorization'];
   if (!auth || !auth.includes(SECRET)) {
     return res.status(403).send('Acceso no autorizado');
@@ -37,6 +34,4 @@ router.post('/deploy', (req, res) => {
     if (stderr) console.warn(`⚠️ STDERR:\n${stderr}`);
     res.send(`✔️ Despliegue exitoso:\n${stdout}`);
   });
-});
-
-module.exports = router;
+};
