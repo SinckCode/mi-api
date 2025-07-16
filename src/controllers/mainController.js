@@ -4,18 +4,29 @@ exports.deploy = (req, res) => {
   const auth = req.headers.authorization;
   const secret = process.env.DEPLOY_SECRET;
 
+  // Verificación de token
   if (!auth || auth !== `Bearer ${secret}`) {
+    console.warn('❌ Acceso no autorizado');
     return res.status(403).send('Unauthorized');
   }
 
-  exec('cd /ruta/a/tu/portafolio && git pull origin main && npm install && npm run build', (error, stdout, stderr) => {
+  // Ruta real del portafolio
+  const commands = `
+    cd /home/onesto/portafolioN &&
+    git pull origin main &&
+    npm install &&
+    npm run build
+  `;
+
+  exec(commands, (error, stdout, stderr) => {
     if (error) {
-      console.error(`❌ Error: ${error.message}`);
+      console.error(`❌ Error al ejecutar comandos: ${error.message}`);
       return res.status(500).send('Deploy failed');
     }
-    if (stderr) console.warn(`⚠️ Stderr: ${stderr}`);
 
-    console.log(`✅ Deploy output:\n${stdout}`);
-    res.send('Deploy successful');
+    if (stderr) console.warn(`⚠️ STDERR:\n${stderr}`);
+    console.log(`✅ STDOUT:\n${stdout}`);
+
+    res.send('✅ Deploy successful');
   });
 };
