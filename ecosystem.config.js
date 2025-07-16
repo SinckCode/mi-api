@@ -7,7 +7,7 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         PORT: 3000,
-        DEPLOY_SECRET: 'a98f3hT97hfd-23HFh90+ffd392_HFD'
+        DEPLOY_SECRET: 'a98f3hT97hfd23HFh90+++ffd392_HFD'
       }
     }
   ]
