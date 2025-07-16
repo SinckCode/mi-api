@@ -23,6 +23,7 @@ exports.deploy = (req, res) => {
     'git pull origin main',
     'npm install',
     'npm run build',
+    `find ${DEST_PATH} -mindepth 1 -delete`,
     `cp -r build/* ${DEST_PATH}/`,
     USE_PM2 ? 'pm2 restart portafolio' : 'echo "Sin pm2, no se reinicia nada"',
   ];
