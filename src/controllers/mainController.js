@@ -4,16 +4,13 @@ exports.deploy = (req, res) => {
   const auth = req.headers.authorization;
   const secret = process.env.DEPLOY_SECRET;
 
-  // Verificación de token
   if (!auth || auth !== `Bearer ${secret}`) {
     console.error('❌ Acceso no autorizado');
-    console.warn('🔒 auth header recibido:', auth);
-    console.warn('🔒 secreto esperado:', `Bearer ${secret}`);
+    console.warn('🔒 auth header recibido:', req.headers.authorization);
+    console.warn('🔒 secreto esperado:', secret);
     return res.status(403).send('Unauthorized');
   }
 
-
-  // Ruta real del portafolio
   const commands = `
     cd /home/onesto/portafolioN &&
     git pull origin main &&
