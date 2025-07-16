@@ -7,6 +7,8 @@ exports.deploy = (req, res) => {
 
   // Comparación exacta
   if (!auth || auth !== `Bearer ${SECRET}`) {
+    console.log('Auth recibido:', req.headers['authorization']);
+    console.log('Clave esperada:', SECRET);
     return res.status(403).send('Acceso no autorizado');
   }
 
