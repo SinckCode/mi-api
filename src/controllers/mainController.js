@@ -7,6 +7,8 @@ exports.deploy = (req, res) => {
   // Verificación de token
   if (!auth || auth !== `Bearer ${secret}`) {
     console.warn('❌ Acceso no autorizado');
+    console.log("🔐 auth header recibido:", auth);
+    console.log("🔐 secreto esperado:", `Bearer ${secret}`);
     return res.status(403).send('Unauthorized');
   }
 
