@@ -2,11 +2,12 @@ module.exports = {
   apps: [
     {
       name: 'mi-api',
-      script: 'app.js',
+      script: './src/app.js', // ← ruta correcta del archivo
       watch: false,
       env: {
         NODE_ENV: 'production',
-        PORT: 3000
+        PORT: 3000,
+        DEPLOY_SECRET: 'a98f3hT97hfd-23HFh90+ffd392_HFD' // ← aquí va tu secreto
       }
     }
   ]
