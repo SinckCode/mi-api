@@ -24,7 +24,8 @@ exports.deploy = (req, res) => {
     'npm install',
     'npm run build',
     `find ${DEST_PATH} -mindepth 1 -delete`,
-    `cp -r build/* ${DEST_PATH}/`,
+    `cp -a build/. ${DEST_PATH}/`,
+    'sudo systemctl reload apache2',
     USE_PM2 ? 'pm2 restart portafolio' : 'echo "Sin pm2, no se reinicia nada"',
   ];
 
