@@ -3,12 +3,14 @@ const { exec } = require('child_process');
 const SECRET = process.env.DEPLOY_SECRET || 'a98f3hT97hfd23HFh90+++ffd392_HFD';
 
 exports.deploy = (req, res) => {
-  const auth = req.headers['authorization'];
+  const auth = req.headers['authorization'] || '';
+  const token = auth.replace(/^Bearer\s+/i, '').trim();
 
-  // Comparación exacta
-  if (!auth || auth !== `Bearer ${SECRET}`) {
-    console.log('Auth recibido:', req.headers['authorization']);
-    console.log('Clave esperada:', SECRET);
+  console.log('Auth recibido:', auth);
+  console.log('Clave esperada:', SECRET);
+  console.log('Token limpio:', token);
+
+  if (token !== SECRET) {
     return res.status(403).send('Acceso no autorizado');
   }
 
