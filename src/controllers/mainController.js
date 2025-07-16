@@ -14,7 +14,7 @@ exports.deploy = (req, res) => {
     return res.status(403).send('Acceso no autorizado');
   }
 
-  const REPO_PATH = '/home/onesto/mi-portfolio';
+  const REPO_PATH = '/home/onesto/portafolioN';
   const DEST_PATH = '/var/www/portafolioN';
   const USE_PM2 = false;
 
@@ -23,8 +23,7 @@ exports.deploy = (req, res) => {
     'git pull origin main',
     'npm install',
     'npm run build',
-    `rm -rf ${DEST_PATH}/*`,
-    `cp -r build/* ${DEST_PATH}`,
+    `cp -r build/* ${DEST_PATH}/`,
     USE_PM2 ? 'pm2 restart portafolio' : 'echo "Sin pm2, no se reinicia nada"',
   ];
 
