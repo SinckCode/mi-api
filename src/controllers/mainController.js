@@ -6,10 +6,10 @@ exports.deploy = (req, res) => {
 
   // Verificación de token
   if (!auth || auth !== `Bearer ${secret}`) {
-    console.warn('❌ Acceso no autorizado');
-    console.log("🔐 auth header recibido:", auth);
-    console.log("🔐 secreto esperado:", `Bearer ${secret}`);
-    return res.status(403).send('Unauthorized');
+      console.error('❌ Acceso no autorizado');
+  console.warn('🔒 auth header recibido:', req.headers.authorization);
+  console.warn('🔒 secreto esperado:', expectedToken);
+  return res.status(403).send('Unauthorized');
   }
 
   // Ruta real del portafolio
