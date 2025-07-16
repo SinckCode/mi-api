@@ -1,0 +1,44 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# PM2 logs and dump
+pids/
+pm2.log
+dump.pm2
+
+# Build artifacts
+dist/
+build/
+
+# Coverage / testing
+coverage/
+.nyc_output/
+
+# OS files
+*.swp
+*.swo
+
+# Cloudflared
+.cloudflared/
