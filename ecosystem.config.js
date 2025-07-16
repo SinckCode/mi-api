@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'mi-api',
+      name: 'api-express',
       script: 'src/app.js',
       watch: false,
       env: {
