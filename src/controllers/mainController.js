@@ -1,6 +1,6 @@
 const { exec } = require('child_process');
 
-const SECRET = process.env.DEPLOY_SECRET || 'a98f3hT97hfd23HFh90+++ffd392_HFD';
+const SECRET = process.env.DEPLOY_SECRET || 'a98f3hT97hfd-23HFh90+ffd392_HFD';
 
 exports.deploy = (req, res) => {
   const auth = req.headers['authorization'] || '';
